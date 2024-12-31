@@ -52,3 +52,9 @@
         echo "DPkg::Post-Invoke { \"rm -f /var/lib/apt/lists/partial/*pve-enterprise*\"; };" > /etc/apt/apt.conf.d/99pvebanner
       args:
         creates: /etc/apt/apt.conf.d/99pvebanner
+
+    - name: Reboot the server
+      reboot:
+        msg: "Reboot initiated by Ansible post-install playbook"
+        timeout: 300
+
